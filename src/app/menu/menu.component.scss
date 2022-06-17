@@ -1,0 +1,33 @@
+
+
+.navigation-menu {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: rgb(58, 58, 58);
+}
+
+.navigation-button {
+    margin: 6px;
+    padding: 10px;
+    background-color: rgb(94, 94, 94);
+    border-radius: 20px;
+    font-family: 'Roboto';
+    color: white;
+    width: 70px;
+    text-align: center;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:focus {
+    background-color: rgb(160, 160, 160);
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+}
