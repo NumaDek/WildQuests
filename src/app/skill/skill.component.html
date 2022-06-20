@@ -1,0 +1,10 @@
+<section>
+    <h2>Panoplie de compétences :</h2>
+    <ul>
+        <li *ngFor="let skill of skills">
+            <span>Compétences : {{skill.name}}</span>
+            <img [src]="skill.logo">
+            <a [href]="skill.site">lien vers le wikipidia de {{skill.name}}</a>
+        </li>
+    </ul>
+</section>
