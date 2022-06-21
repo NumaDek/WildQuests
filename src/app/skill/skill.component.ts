@@ -7,7 +7,7 @@ import { Skill } from '../common/skill.model';
   styleUrls: ['./skill.component.scss']
 })
 export class SkillComponent implements OnInit {
-  @Input() skills: Skill[] = []
+  @Input() skill: Skill = new Skill("", "", "");
 
   constructor() {
 

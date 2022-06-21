@@ -3,7 +3,8 @@
     <p>Age : {{developer.age}}</p>
     <p>Sexe : {{developer.sexe}}</p>
     <p>Biography : {{developer.bio}}</p>
-    <app-skill [skills]="developer.skills">
+    <h2>Panoplie de compétences :</h2>
+    <app-skill *ngFor="let skill of developer.skills" [skill]="skill">
         
     </app-skill>
 </section>
