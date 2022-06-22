@@ -1,0 +1,42 @@
+<form (ngSubmit)="signUp.valid && onFormSubmit()" #signUp="ngForm">
+    <div class="input-pair">
+        <label for="firstname">Prénom : </label>
+        <input type="text" name="firstname" [(ngModel)]="user.firstname" #firstname="ngModel" required maxlength="15" minlength="3">
+        <div *ngIf="firstname.errors && signUp.submitted" class="error-message">
+            <span *ngIf="firstname.errors['maxlength']">Le prénom ne doit pas dépasser 15 caractères</span>
+            <span *ngIf="firstname.errors['minlength']">Le prénom doit comporter au moins 3 caractères</span>
+            <span *ngIf="firstname.errors['required']">Le prénom est requis</span>
+        </div>
+    </div>
+
+    <div class="input-pair">
+        <label for="lastname">Nom de famille : </label>
+        <input type="text" name="lastname" [(ngModel)]="user.lastname" #lastname="ngModel" required maxlength="15" minlength="3">
+        <div *ngIf="lastname.errors && signUp.submitted" class="error-message">
+            <span *ngIf="lastname.errors['maxlength']">Le prénom ne doit pas dépasser 15 caractères</span>
+            <span *ngIf="lastname.errors['minlength']">Le prénom doit comporter au moins 3 caractères</span>
+            <span *ngIf="lastname.errors['required']">Le prénom est requis</span>
+        </div>
+    </div>
+
+    <div class="input-pair">
+        <label for="mail">Adresse email : </label>
+        <input type="mail" name="mail" [(ngModel)]="user.mail" #mail="ngModel" required email>
+        <div *ngIf="mail.errors && signUp.submitted" class="error-message">
+            <span *ngIf="mail.errors['required']">Le prénom est requis</span>
+            <span *ngIf="mail.errors['email']">L'email est invalide</span>
+        </div>
+    </div>
+    <div class="input-pair">
+        <label for="password">Mot de passe : </label>
+        <input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required minlength="6">
+        <div *ngIf="password.errors && signUp.submitted" class="error-message">
+            <span *ngIf="password.errors['minlength']">Le prénom doit comporter au moins 6 caractères</span>
+            <span *ngIf="password.errors['required']">Le prénom est requis</span>
+        </div>
+    </div>
+    <div class="input-pair button">
+        <button type="submit">S'inscrire</button>
+    </div>
+    
+</form>
