@@ -6,10 +6,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./create-onomatopia.component.scss']
 })
 export class CreateOnomatopiaComponent implements OnInit {
-  public newOnomatopia: String = "";
+  public newOnomatopia: string = "";
   
   @Output()
-  public sendOnomatopiaToParent:EventEmitter<any> = new EventEmitter();
+  public sendOnomatopiaToParent:EventEmitter<string> = new EventEmitter();
 
   constructor() { }
 
