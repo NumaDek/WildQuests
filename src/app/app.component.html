@@ -1,0 +1,6 @@
+<h1>{{title}} a été cliqué.</h1>
+<app-button *ngFor="let button of buttons"
+    [button]="button"
+    (sendClickedButton)="onReceivedButtonClicked($event)"
+></app-button>
+<p *ngIf="allClicked">Tous les bouttons ont été cliqués.</p>
