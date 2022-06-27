@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { User } from '../models/user.model';
+import { Address } from '../models/address.model';
 
 @Component({
   selector: 'app-user',
@@ -9,20 +10,27 @@ import { User } from '../models/user.model';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  public userName:FormControl = new FormControl('');
-  public userMail:FormControl = new FormControl('');
-  public userPassword:FormControl = new FormControl('');
-  public userStreet:FormControl = new FormControl('');
-  public userCity:FormControl = new FormControl('');
-  public userZipCode:FormControl = new FormControl('');
   public users:User[] = []
 
   public onSubmit() : void {
-    this.users.push(new User(this.userName.value, this.userMail.value, this.userPassword.value, this.userStreet.value, this.userCity.value, this.userZipCode.value));
+   this.users.push(new User(this.userForm.value.credentials.name, this.userForm.value.credentials.mail, this.userForm.value.credentials.password, new Address(this.userForm.value.address.street, this.userForm.value.address.city, this.userForm.value.address.zipCode)));
   }
+
+  public userForm: FormGroup = this.formBuilder.group({
+    credentials: this.formBuilder.group({
+      name: [''],
+      mail: [''],
+      password: ['']
+    }),
+    address: this.formBuilder.group({
+      street: [''],
+      city: [''],
+      zipCode: ['']  
+    })
+  });
 }
