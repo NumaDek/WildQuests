@@ -1,0 +1,30 @@
+<form [formGroup]="searchMovie" (submit)="onSubmit()">
+    <div>
+        <label for="movieId">Identifiant</label>
+        <input type="text" name="movieId" formControlName="movieId">
+    </div>
+    <div>
+        <label for="title">Titre</label>
+        <input type="text" name="title" formControlName="title">
+    </div>
+    <div>
+        <label for="type">Type</label>
+        <select name="type" formControlName="type">
+            <option>Film</option>
+            <option>Série</option>
+            <option>Épisode</option>
+        </select>
+    </div>
+    <div>
+        <label for="year">Année</label>
+        <input type="number" name="year" formControlName="year" min="1900" max="2099">
+    </div>
+    <div>
+        <label for="file">Fiche</label>
+        <select name="file" formControlName="file">
+            <option>Complète</option>
+            <option>Courte</option>
+        </select>
+    </div>
+    <button type="submit">Rechercher</button>
+</form>
