@@ -2,39 +2,45 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <section formGroupName="credentials">
         <h3>Utilisateur : </h3>
-        <div>
+        <div class="form-row">
             <label for="name">Nom d'utilisateur : </label>
             <input type="text" name="name" formControlName="name">
         </div>
-        <div>
-            <label for="mail">Adresse mail : </label>
-            <input type="mail" name="mail" formControlName="mail">
+        <div class="form-row">
+            <label for="email">Adresse email : </label>
+            <input type="email" name="email" formControlName="email">
+
+            <div *ngIf="isSubmitted && this.userForm.get('credentials.email')?.errors" class="error-msg">
+                <div *ngIf="this.userForm.get('credentials.email')?.errors?.['required']">L'adresse email est requise.</div>
+                <div *ngIf="!this.userForm.get('credentials.email')?.errors?.['required'] && !this.userForm.get('credentials.email')?.errors?.['isEmailValid']">L'adresse email doit être valide.</div>
+            </div>
+
         </div>
-        <div>
+        <div class="form-row">
             <label for="password">Mot de passe : </label>
             <input type="password" name="password" formControlName="password">
         </div>
     </section>
     <section formGroupName="address">
         <h3>Adresse : </h3>
-        <div>
+        <div class="form-row">
             <label for="street">Nom de la rue : </label>
             <input type="text" name="street" formControlName="street">
         </div>
-        <div>
+        <div class="form-row">
             <label for="city">Ville : </label>
             <input type="text" name="city" formControlName="city">
         </div>
-        <div>
+        <div class="form-row">
             <label for="zipCode">Code postale : </label>
             <input type="text" name="zipCode" formControlName="zipCode">
         </div>
     </section>
     <div>
-        <input type="submit" value="S'inscrire" [disabled]="!userForm.valid">
+        <input type="submit" value="S'inscrire">
     </div>
 </form>
 <h2>Utilisateurs inscris : </h2>
 <ul>
-    <li *ngFor="let user of users">utilisateur : {{user.name}} joignable à {{user.mail}} et habitant au {{user.address.street}} {{user.address.zipCode}} {{user.address.city}}.</li>
+    <li *ngFor="let user of users">utilisateur : {{user.name}} joignable à {{user.email}} et habitant au {{user.address.street}} {{user.address.zipCode}} {{user.address.city}}.</li>
 </ul>
