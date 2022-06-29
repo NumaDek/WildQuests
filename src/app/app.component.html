@@ -1,0 +1,16 @@
+<header>
+    <h1>Kitten Story</h1>
+</header>
+<main>
+    <app-user-kitten class="flex-repartition-outer"></app-user-kitten>
+    <app-list-kitten class="flex-repartition-inner" [kittenList]="kittenList"></app-list-kitten>
+    <app-create-kitten class="flex-repartition-outer" (sendNewKitten)="onReceivedNewKitten($event)"></app-create-kitten>
+</main>
+<ul>
+    <li *ngFor="let kitten of kittenList">
+        {{ kitten.name }}
+        {{ kitten.race }}
+        {{ kitten.birthday }}
+        {{ kitten.pictureUrl }}
+    </li>
+</ul>

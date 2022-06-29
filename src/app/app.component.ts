@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Kitten } from './models/kitten.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'WildQuests';
+  public kittenList: Kitten[] = [];
+
+  public onReceivedNewKitten(event: Kitten): void {
+    this.kittenList.push(event);
+    console.log("J'ai reçu ", event);
+  }
 }

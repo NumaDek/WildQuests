@@ -1,0 +1,30 @@
+<section>
+    <h2>Inscrire un chaton</h2>
+    <form [formGroup]="kittyForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <label>Nom : 
+                <input type="text" name="name" formControlName="name">
+            </label>
+            <div *ngIf="kittyForm.get('name')?.errors && kittyForm.get('name')?.errors?.['required'] && isSubmitted" class="form-error">Le nom est requis.</div>
+        </div>
+        <div class="form-row">
+            <label>Race : 
+                <input type="text" name="race" formControlName="race">
+            </label>
+            <div *ngIf="kittyForm.get('race')?.errors && kittyForm.get('race')?.errors?.['required'] && isSubmitted" class="form-error">La race est requise.</div>
+        </div>
+        <div class="form-row">
+            <label>Date de naissance : 
+                <input type="date" name="birthday" formControlName="birthday">
+            </label>
+            <div *ngIf="kittyForm.get('birthday')?.errors && kittyForm.get('birthday')?.errors?.['required'] && isSubmitted" class="form-error">La date de naissance est requise.</div>
+        </div>
+        <div class="form-row">
+            <label>Photo : 
+                <input type="text" name="pictureUrl" formControlName="pictureUrl">
+            </label>
+            <div *ngIf="kittyForm.get('pictureUrl')?.errors && kittyForm.get('pictureUrl')?.errors?.['required'] && isSubmitted" class="form-error">La photo est requise.</div>
+        </div>
+        <input type="submit" value="Inscrire">
+    </form>
+</section>

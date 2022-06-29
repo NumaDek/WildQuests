@@ -1,0 +1,34 @@
+section {
+    background-color: rgb(150, 150, 150);
+    border: 1px solid white;
+    padding: 0px 10px;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 5px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    input {
+        height: 20px;
+        width: 60%;
+    }
+}
+
+.form-row {
+    height: 60px;
+}
+
+.form-error {
+    color: rgb(230, 0, 0);
+    font-weight: bold;
+}

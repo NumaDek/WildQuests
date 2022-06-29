@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+h1 {
+    width: 320px;
+    font-size: 300%;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: rgb(49, 49, 49);
+    // box-shadow: 0px 2px 20px 0px rgb(49, 49, 49);
+}
+
+body {
+    margin: 0;
+    background-color: rgb(200, 200, 200);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+main {
+    display: flex;
+    // justify-content: space-between;
+}
