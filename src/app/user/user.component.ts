@@ -16,7 +16,8 @@ export class UserComponent {
   constructor(private formBuilder: FormBuilder) { }
 
   public onSubmit() : void {
-    this.users.push(new User(this.userForm.value.credentials.name, this.userForm.value.credentials.mail, this.userForm.value.credentials.password, new Address(this.userForm.value.address.street, this.userForm.value.address.city, this.userForm.value.address.zipCode)));
+    if (this.userForm.valid)
+      this.users.push(new User(this.userForm.value.credentials.name, this.userForm.value.credentials.mail, this.userForm.value.credentials.password, new Address(this.userForm.value.address.street, this.userForm.value.address.city, this.userForm.value.address.zipCode)));
     this.isSubmitted = true;
   }
 
