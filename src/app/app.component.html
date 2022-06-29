@@ -1,0 +1,31 @@
+<section>
+    <h2>Ajouter des articles</h2>
+    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <label> Nom 
+                <input type="text" formControlName="name">
+            </label>
+            <div class="error-msg" *ngIf="isSubmitted && articleForm.get('name')?.errors && articleForm.get('name')?.errors?.['required']">Le nom est requis.</div>
+        </div>
+        <div class="form-row">
+            <label> Réference 
+                <input type="text" formControlName="reference">
+            </label>
+            <div class="error-msg" *ngIf="isSubmitted && articleForm.get('reference')?.errors && articleForm.get('reference')?.errors?.['required']">La reference est requise.</div>
+            <div class="error-msg" *ngIf="isSubmitted && articleForm.get('reference')?.errors && !articleForm.get('reference')?.errors?.['required'] && !articleForm.get('reference')?.errors?.['isReferenceFormatted']">La reference n'est pas bien formatté.</div>
+        </div>
+        <div class="form-row">
+            <label> description 
+                <input type="text" formControlName="description">
+            </label>
+            <div class="error-msg" *ngIf="isSubmitted && articleForm.get('description')?.errors && articleForm.get('description')?.errors?.['required']">La description est requise.</div>
+        </div>
+        <input type="submit" value="Ajouter">
+    </form>
+</section>
+<section>
+    <h2>article en magasin</h2>
+    <ul>
+        <li *ngFor="let article of articleList">Nom : {{article.name}} Reference : {{article.reference}} Description : {{article.description}}</li>
+    </ul>
+</section>
