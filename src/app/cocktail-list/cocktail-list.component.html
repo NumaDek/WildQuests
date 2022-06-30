@@ -1,0 +1,10 @@
+<section>
+    <h1>Liste des cocktails : </h1>
+    <div class="mojito-list">
+        <div *ngFor="let cocktail of cocktails" class="mojito-card">
+            <img [src]="cocktail.img">
+            <h2>{{cocktail.name}}</h2>
+            <p>{{cocktail.price}}€</p>
+        </div>
+    </div>
+</section>
