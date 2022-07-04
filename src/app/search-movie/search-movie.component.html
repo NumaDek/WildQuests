@@ -1,30 +1,61 @@
-<form [formGroup]="searchMovie" (submit)="onSubmit()">
-    <div>
-        <label for="movieId">Identifiant</label>
-        <input type="text" name="movieId" formControlName="movieId">
+<section>
+  <h1>Chercher un film</h1>
+  <form [formGroup]="searchMovie" (submit)="onSubmit()">
+    <div [formGroup]="searchMovie.controls.identity">
+      <div class="form-row">
+        <div class="input-row">
+          <label for="movieId">Identifiant</label>
+          <input type="text" name="movieId" formControlName="movieId" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-row">
+          <label for="title">Titre</label>
+          <input type="text" name="title" formControlName="title" />
+        </div>
+        <div
+          *ngIf="searchMovie.get('identity')?.errors && isSubmitted"
+          class="error-msg"
+        >
+          <div *ngIf="searchMovie.get('identity')?.errors?.['isRequiredValidator']">
+            {{searchMovie.get('identity')?.errors?.['isRequiredValidator'].isRequired?.rules}}
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-        <label for="title">Titre</label>
-        <input type="text" name="title" formControlName="title">
-    </div>
-    <div>
+    <div class="form-row">
+      <div class="input-row">
         <label for="type">Type</label>
         <select name="type" formControlName="type">
-            <option>Film</option>
-            <option>Série</option>
-            <option>Épisode</option>
+          <option>Film</option>
+          <option>Série</option>
+          <option>Épisode</option>
         </select>
+      </div>
     </div>
-    <div>
+    <div class="form-row">
+      <div class="input-row">
         <label for="year">Année</label>
-        <input type="number" name="year" formControlName="year" min="1900" max="2099">
+        <input type="number" name="year" formControlName="year" />
+      </div>
+      <div *ngIf="searchMovie.get('year')?.errors && isSubmitted" class="error-msg">
+        <div *ngIf="searchMovie.get('year')?.errors?.['min']">
+          {{searchMovie.get('year')?.errors?.['min'].rules}}
+        </div>
+        <div *ngIf="searchMovie.get('year')?.errors?.['required']">
+          {{searchMovie.get('year')?.errors?.['required'].errors}}
+        </div>
+      </div>
     </div>
-    <div>
+    <div class="form-row">
+      <div class="input-row">
         <label for="file">Fiche</label>
         <select name="file" formControlName="file">
-            <option>Complète</option>
-            <option>Courte</option>
+          <option>Complète</option>
+          <option>Courte</option>
         </select>
+      </div>
     </div>
     <button type="submit">Rechercher</button>
-</form>
+  </form>
+</section>

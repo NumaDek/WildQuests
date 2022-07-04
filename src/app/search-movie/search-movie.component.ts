@@ -1,35 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { isRequiredValidator } from '../validators/id-or-title.validator';
+import { rangeDateValidator } from '../validators/year.validator';
 
 @Component({
   selector: 'app-search-movie',
   templateUrl: './search-movie.component.html',
-  styleUrls: ['./search-movie.component.scss']
+  styleUrls: ['./search-movie.component.scss'],
 })
 export class SearchMovieComponent implements OnInit {
-  
-  constructor(private formBuilder: FormBuilder) { }
+  public isSubmitted: boolean = false;
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
-
-  // public searchMovie: FormGroup = new FormGroup({
-  //   title: new FormControl(''),
-  //   movieId: new FormControl(''),
-  //   type: new FormControl(''),
-  //   year: new FormControl(''),
-  //   file: new FormControl(''),
-  // });
+  ngOnInit(): void {
+    this.searchMovie.get('file')?.patchValue('Courte');
+  }
 
   public searchMovie = this.formBuilder.group({
-    title:['', Validators.required],
-    movieId: ['', Validators.required],
-    type: ['', Validators.required],
-    year: ['', Validators.required, Validators.min(1900), Validators.max(2099)],
+    identity: this.formBuilder.group(
+      {
+        title: ['', Validators.required],
+        movieId: ['', Validators.required],
+      },
+      { validator: isRequiredValidator }
+    ),
+    type: ['Série', Validators.required],
+    year: ['', [Validators.required, rangeDateValidator]],
     file: ['', Validators.required],
   });
 
   public onSubmit() {
-    console.log(this.searchMovie.value);
-    this.searchMovie
+    console.log(JSON.stringify(this.searchMovie.value));
+    // console.log(this.searchMovie.get('identity')?.errors?.['isRequiredValidator']);
+    this.isSubmitted = true;
   }
 }
