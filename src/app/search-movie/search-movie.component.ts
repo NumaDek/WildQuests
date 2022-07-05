@@ -31,7 +31,6 @@ export class SearchMovieComponent implements OnInit {
 
   public onSubmit() {
     console.log(JSON.stringify(this.searchMovie.value));
-    // console.log(this.searchMovie.get('identity')?.errors?.['isRequiredValidator']);
     this.isSubmitted = true;
   }
 }
