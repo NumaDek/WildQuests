@@ -1,4 +1,4 @@
-![alt text](https://github.com/Numadek/WildQuests/blob/11-Les-services-2/Servive-tests-2.png?raw=true)
+![alt text](https://github.com/NumaDek/WildQuests/blob/11-Les-services-2/src/assets/Service-tests-2.png?raw=true)
 
 # WildQuests
 
